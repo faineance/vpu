@@ -3,7 +3,7 @@ extern crate libc;
 use std::ptr;
 use std::mem;
 const PAGE_SIZE: usize = 4096;
-
+// const C_CALL_CONVECTION: [u8] = 
 struct JITFn {
     code: *mut u8,
     len: usize
@@ -18,9 +18,8 @@ impl JITFn {
     	unsafe {
     		let mut _code : *mut libc::c_void = mem::uninitialized();
     		_code = libc::mmap(0 as *mut libc::c_void, len, prot, flags, -1, 0);
-    		libc::posix_memalign(&mut _code, PAGE_SIZE, len);
     		code = mem::transmute(_code);
-    		ptr::copy_nonoverlapping(buffer.as_mut_ptr(), code, len);
+    		ptr::copy_nonoverlapping(buffer.as_ptr(), code, len);
     		libc::mprotect(code as *mut libc::c_void, len, libc::PROT_READ | libc::PROT_EXEC);
     	}
         JITFn { code: code, len: len }
@@ -65,7 +64,8 @@ fn test_fn() {
     ];
 
  	
-    let mul = JITFn::new(code);
+    let mul = JITFn::new(code.clone());
+    let mul2 = JITFn::new(code.clone());
 
 
     mul.as_c_fn(|c_fn: extern "C" fn(libc::c_int, libc::c_int) -> libc::c_int | {
