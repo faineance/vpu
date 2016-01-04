@@ -6,14 +6,9 @@ pub mod sse;
 pub mod sse2;
 pub mod sse3;
 pub mod ssse3;
-pub mod sse4;
 pub mod sse4a;
 pub mod sse41;
 pub mod sse42;
-
-
-
-
 
 pub mod emit;
 

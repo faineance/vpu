@@ -1,6 +1,6 @@
 
 /*CPUs with AVX-512
-	Why does it take so lang
+    Why does it take so lang
     Intel
         Knights Landing Xeon Phi processor, 2015
         Skylake Xeon processor, expected in 2016
