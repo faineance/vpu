@@ -1,3 +1,20 @@
+pub mod avx;
+pub mod avx2;
+pub mod avx512;
+
+pub mod sse;
+pub mod sse2;
+pub mod sse3;
+pub mod ssse3;
+pub mod sse4;
+pub mod sse4a;
+pub mod sse41;
+pub mod sse42;
+
+
+
+
+
 pub mod emit;
 
 pub enum Flags {
@@ -24,7 +41,7 @@ pub enum Flags {
     ID, // Identification flag
 }
 
-// massive enum incoming (todo: break apart by sse)
+// massive enum incoming (todo: break apart)
 pub enum Register {
     RAX, EAX,  AX, AH, AL, // Accumulator
     RBX, EBX,  BX, BH, BL, // Base index (for use with arrays)

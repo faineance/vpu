@@ -35,6 +35,7 @@ impl Vendor {
 	}
 }
 
+#[derive(Debug)]
 pub struct OSFeatures {
 	avx: bool,
 	avx512: bool,
@@ -56,6 +57,7 @@ impl OSFeatures {
 	}
 }
 
+#[derive(Debug)]
 struct HWFeatures {
 	mmx: bool,          
 	x64: bool,          
@@ -85,6 +87,7 @@ impl HWFeatures {
 	}
 }
 
+#[derive(Debug)]
 struct SIMDFeatures {
 	// 128-bit
 	sse: bool,         
@@ -150,12 +153,14 @@ impl SIMDFeatures {
 
 }
 
+#[derive(Debug)]
 pub struct ProcessorInfo {
 	vendor: Vendor,
 	os_features: OSFeatures,
 	hw_features: HWFeatures,
 	simd_features: SIMDFeatures
 }
+
 
 impl ProcessorInfo {
 	fn detect(cpuid: &cpuid::CpuId) -> ProcessorInfo {
