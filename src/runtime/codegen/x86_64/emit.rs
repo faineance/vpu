@@ -1,0 +1,1 @@
+pub struct Emit(Vec<u8>);

@@ -1,6 +1,6 @@
-#![feature(libc, asm)] 
+#![feature(libc, asm, convert)] 
 extern crate byteorder;
-mod jit;
-mod codegen;
+mod runtime;
 mod lir;
 mod hir;
+mod vm;

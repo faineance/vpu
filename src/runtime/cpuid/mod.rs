@@ -1,7 +1,6 @@
+mod cpuid;
 use std::slice;
 use std::mem;
-pub mod x86_64;
-pub mod cpuid;
 
 use byteorder::{LittleEndian, WriteBytesExt};
 
@@ -171,9 +170,4 @@ impl ProcessorInfo {
             simd_features: SIMDFeatures::detect(cpuid)
         }
     }
-}
-
-#[test]
-fn test() {
-    let info = ProcessorInfo::detect(&cpuid::CpuId::detect());
 }
